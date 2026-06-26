@@ -4,8 +4,19 @@ import { toast } from "react-toastify";
 import { getEventDetails, bookEvent, genOrderId, verifyPayment } from "../services/api";
 
 const BACKEND      = "http://localhost:8000";
-const RAZORPAY_KEY = "rzp_test_VQhEfe2NCXbbwI";
+const RAZORPAY_KEY = "rzp_test_T6HlGeWKiUG0PP";
 const SPIN         = `@keyframes spin{to{transform:rotate(360deg)}}`;
+
+// Suppress Razorpay CORS tracking errors (harmless analytics)
+if (typeof window !== 'undefined') {
+  const originalError = console.error;
+  console.error = function(...args) {
+    if (args[0]?.includes?.('CORS') && args[0]?.includes?.('razorpay')) return;
+    if (args[0]?.includes?.('lumberjack')) return;
+    originalError.apply(console, args);
+  };
+}
+
 const loadRazorpay = () => new Promise((resolve) => {
   if (window.Razorpay) return resolve(true);
   const s = document.createElement("script");

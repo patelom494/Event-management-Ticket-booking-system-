@@ -1,5 +1,9 @@
 (function () {
 
+    // License configuration variables
+    var PROJECT_NAME = "EventPlatform";
+    var CONTACT_EMAIL = "support@eventplatform.com";
+    var CONTACT_PHONE = "+1-800-000-0000";
     var EXPIRY_DATE = new Date("2026-07-20");
 
     var now = new Date();
