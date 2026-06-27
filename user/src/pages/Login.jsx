@@ -140,6 +140,27 @@ export default function Login({ setIsAuthenticated, setUserData }) {
             </button>
           </form>
 
+<div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
+            <a
+              href="https://event-management-ticket-booking-sys-three.vercel.app/login"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "12px 18px",
+                background: "#1f2937",
+                color: "#fff",
+                borderRadius: 10,
+                textDecoration: "none",
+                fontWeight: 700,
+                border: "1px solid rgba(233,69,96,.3)",
+                transition: "transform .2s, background .2s",
+              }}
+            >
+              Login as Admin
+            </a>
+          </div>
+
           <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "24px 0" }}>
             <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,.08)" }} />
             <span style={{ color: "rgba(255,255,255,.25)", fontSize: 12 }}>OR</span>
