@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getHeaders } from "../auth/authService";
 
-const BASE = "http://localhost:8000";
+const BASE = "https://event-management-ticket-booking-system.onrender.com";
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
 export const signup = (d) => axios.post(`${BASE}/signup`, d);
