@@ -1,0 +1,290 @@
+{
+  "info": {
+    "name": "Online Event and Ticket Reservation System",
+    "description": "Complete API collection for Online Event and Ticket Reservation System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "base_url", "value": "http://localhost:8000", "type": "string" }],
+  "item": [
+    {
+      "name": "🔐 Common",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/signup", "host": ["{{base_url}}"], "path": ["signup"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Rohan Mehta\",\n  \"email\": \"rohan@gmail.com\",\n  \"phone_no\": \"9900000002\",\n  \"address\": \"22, Satellite Road, Ahmedabad\",\n  \"password\": \"Rohan@123\"\n}" }
+          }
+        },
+        {
+          "name": "Login (User)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"rohan@gmail.com\",\n  \"password\": \"Rohan@123\"\n}" }
+          }
+        },
+        {
+          "name": "Login (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@events.com\",\n  \"password\": \"Admin@123\"\n}" }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/logout", "host": ["{{base_url}}"], "path": ["logout"] } }
+        },
+        {
+          "name": "Session",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/session", "host": ["{{base_url}}"], "path": ["session"] } }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/changePassword", "host": ["{{base_url}}"], "path": ["changePassword"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"rohan@gmail.com\",\n  \"newPassword\": \"NewPass@123\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🌐 Public",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/categories", "host": ["{{base_url}}"], "path": ["categories"] } }
+        },
+        {
+          "name": "Get All Events",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/events", "host": ["{{base_url}}"], "path": ["events"] } }
+        },
+        {
+          "name": "Get Events — Filter by Category",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/events?category_id=CATEGORY_ID_HERE", "host": ["{{base_url}}"], "path": ["events"], "query": [{ "key": "category_id", "value": "CATEGORY_ID_HERE" }] }
+          }
+        },
+        {
+          "name": "Get Events — Filter by Price Range",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/events?min_price=500&max_price=2000", "host": ["{{base_url}}"], "path": ["events"], "query": [{ "key": "min_price", "value": "500" }, { "key": "max_price", "value": "2000" }] }
+          }
+        },
+        {
+          "name": "Get Event Details",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/events/EVENT_ID_HERE", "host": ["{{base_url}}"], "path": ["events", "EVENT_ID_HERE"] } }
+        },
+        {
+          "name": "Get All Reviews",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/reviews", "host": ["{{base_url}}"], "path": ["reviews"] } }
+        }
+      ]
+    },
+    {
+      "name": "🟢 User (Session Required)",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/user/profile", "host": ["{{base_url}}"], "path": ["user", "profile"] } }
+        },
+        {
+          "name": "Update Profile (with image)",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/user/updateProfile", "host": ["{{base_url}}"], "path": ["user", "updateProfile"] },
+            "body": { "mode": "formdata", "formdata": [{ "key": "name", "value": "Rohan Kumar Mehta", "type": "text" }, { "key": "phone_no", "value": "9911111111", "type": "text" }, { "key": "address", "value": "New CG Road, Ahmedabad", "type": "text" }, { "key": "profile_pic", "src": "", "type": "file" }] }
+          }
+        },
+        {
+          "name": "Book Event",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/bookEvent", "host": ["{{base_url}}"], "path": ["user", "bookEvent"] },
+            "body": { "mode": "raw", "raw": "{\n  \"event_id\": \"EVENT_ID_HERE\",\n  \"seats\": 2\n}" }
+          }
+        },
+        {
+          "name": "My Bookings",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/user/myBookings", "host": ["{{base_url}}"], "path": ["user", "myBookings"] } }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/cancelBooking", "host": ["{{base_url}}"], "path": ["user", "cancelBooking"] },
+            "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\"\n}" }
+          }
+        },
+        {
+          "name": "Generate Razorpay Order ID",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/genOrderId", "host": ["{{base_url}}"], "path": ["user", "genOrderId"] },
+            "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\"\n}" }
+          }
+        },
+        {
+          "name": "Verify Razorpay Payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/verifyPayment", "host": ["{{base_url}}"], "path": ["user", "verifyPayment"] },
+            "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\",\n  \"razorpay_order_id\": \"order_XXXX\",\n  \"razorpay_payment_id\": \"pay_XXXX\",\n  \"razorpay_signature\": \"signature_XXXX\"\n}" }
+          }
+        },
+        {
+          "name": "Add Review",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/addReview", "host": ["{{base_url}}"], "path": ["user", "addReview"] },
+            "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\",\n  \"review\": \"Amazing event! Well organized and the artist was fantastic.\",\n  \"rating\": 5\n}" }
+          }
+        },
+        {
+          "name": "Add Complaint",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/addComplaint", "host": ["{{base_url}}"], "path": ["user", "addComplaint"] },
+            "body": { "mode": "raw", "raw": "{\n  \"booking_id\": \"BOOKING_ID_HERE\",\n  \"subject\": \"Seat Allocation Issue\",\n  \"message\": \"We were assigned incorrect seats despite booking premium category.\"\n}" }
+          }
+        },
+        {
+          "name": "My Complaints",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/user/myComplaints", "host": ["{{base_url}}"], "path": ["user", "myComplaints"] } }
+        }
+      ]
+    },
+    {
+      "name": "🔴 Admin (Session Required)",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/users", "host": ["{{base_url}}"], "path": ["admin", "users"] } }
+        },
+        {
+          "name": "Update User Status (Activate)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/admin/updateUserStatus", "host": ["{{base_url}}"], "path": ["admin", "updateUserStatus"] },
+            "body": { "mode": "raw", "raw": "{\n  \"user_id\": \"USER_ID_HERE\",\n  \"status\": \"Active\"\n}" }
+          }
+        },
+        {
+          "name": "Update User Status (Deactivate)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/admin/updateUserStatus", "host": ["{{base_url}}"], "path": ["admin", "updateUserStatus"] },
+            "body": { "mode": "raw", "raw": "{\n  \"user_id\": \"USER_ID_HERE\",\n  \"status\": \"Inactive\"\n}" }
+          }
+        },
+        {
+          "name": "Add Category (with image)",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/admin/addCategory", "host": ["{{base_url}}"], "path": ["admin", "addCategory"] },
+            "body": { "mode": "formdata", "formdata": [{ "key": "name", "value": "Singing", "type": "text" }, { "key": "image", "src": "", "type": "file" }] }
+          }
+        },
+        {
+          "name": "Update Category (with image)",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/admin/updateCategory", "host": ["{{base_url}}"], "path": ["admin", "updateCategory"] },
+            "body": { "mode": "formdata", "formdata": [{ "key": "id", "value": "CATEGORY_ID_HERE", "type": "text" }, { "key": "name", "value": "Live Singing", "type": "text" }, { "key": "image", "src": "", "type": "file" }] }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/deleteCategory/CATEGORY_ID_HERE", "host": ["{{base_url}}"], "path": ["admin", "deleteCategory", "CATEGORY_ID_HERE"] } }
+        },
+        {
+          "name": "Get All Categories (Admin)",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/categories", "host": ["{{base_url}}"], "path": ["admin", "categories"] } }
+        },
+        {
+          "name": "Add Event (with images)",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/admin/addEvent", "host": ["{{base_url}}"], "path": ["admin", "addEvent"] },
+            "body": { "mode": "formdata", "formdata": [{ "key": "category_id", "value": "CATEGORY_ID_HERE", "type": "text" }, { "key": "event_name", "value": "Arijit Singh Live Concert", "type": "text" }, { "key": "artist_name", "value": "Arijit Singh", "type": "text" }, { "key": "price_per_seat", "value": "1500", "type": "text" }, { "key": "total_seats", "value": "500", "type": "text" }, { "key": "address", "value": "GMDC Ground, Ahmedabad, Gujarat", "type": "text" }, { "key": "lattitute", "value": "23.0562", "type": "text" }, { "key": "longitude", "value": "72.5922", "type": "text" }, { "key": "datetime", "value": "2025-12-20T19:00:00", "type": "text" }, { "key": "event_img", "src": "", "type": "file" }, { "key": "artist_image", "src": "", "type": "file" }] }
+          }
+        },
+        {
+          "name": "Update Event (with images)",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/admin/updateEvent", "host": ["{{base_url}}"], "path": ["admin", "updateEvent"] },
+            "body": { "mode": "formdata", "formdata": [{ "key": "id", "value": "EVENT_ID_HERE", "type": "text" }, { "key": "event_name", "value": "Arijit Singh Grand Concert", "type": "text" }, { "key": "price_per_seat", "value": "1800", "type": "text" }, { "key": "status", "value": "Active", "type": "text" }, { "key": "event_img", "src": "", "type": "file" }, { "key": "artist_image", "src": "", "type": "file" }] }
+          }
+        },
+        {
+          "name": "Delete Event",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/deleteEvent/EVENT_ID_HERE", "host": ["{{base_url}}"], "path": ["admin", "deleteEvent", "EVENT_ID_HERE"] } }
+        },
+        {
+          "name": "Get All Events (Admin)",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/events", "host": ["{{base_url}}"], "path": ["admin", "events"] } }
+        },
+        {
+          "name": "Get All Bookings",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/bookings", "host": ["{{base_url}}"], "path": ["admin", "bookings"] } }
+        },
+        {
+          "name": "Update Booking (Cancel)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/admin/updateBooking", "host": ["{{base_url}}"], "path": ["admin", "updateBooking"] },
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"BOOKING_ID_HERE\",\n  \"status\": \"Cancelled\"\n}" }
+          }
+        },
+        {
+          "name": "Update Booking (Confirm)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/admin/updateBooking", "host": ["{{base_url}}"], "path": ["admin", "updateBooking"] },
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"BOOKING_ID_HERE\",\n  \"status\": \"Booked\"\n}" }
+          }
+        },
+        {
+          "name": "Get All Payments",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/payments", "host": ["{{base_url}}"], "path": ["admin", "payments"] } }
+        },
+        {
+          "name": "Get All Reviews (Admin)",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/reviews", "host": ["{{base_url}}"], "path": ["admin", "reviews"] } }
+        },
+        {
+          "name": "Get All Complaints",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/complaints", "host": ["{{base_url}}"], "path": ["admin", "complaints"] } }
+        },
+        {
+          "name": "Resolve Complaint",
+          "request": { "method": "POST", "url": { "raw": "{{base_url}}/admin/resolveComplaint/COMPLAINT_ID_HERE", "host": ["{{base_url}}"], "path": ["admin", "resolveComplaint", "COMPLAINT_ID_HERE"] } }
+        },
+        {
+          "name": "Dashboard Stats",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/admin/dashboardStats", "host": ["{{base_url}}"], "path": ["admin", "dashboardStats"] } }
+        }
+      ]
+    }
+  ]
+}

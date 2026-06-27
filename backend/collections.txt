@@ -1,0 +1,44 @@
+====================================================
+  EVENT & TICKET RESERVATION — MongoDB Collections
+====================================================
+
+Database Name : event_platform
+
+Collections:
+1. users
+2. categories
+3. events
+4. event_bookings
+5. event_payments
+6. reviews
+7. complaints
+
+====================================================
+  HOW TO RUN SEED DATA
+====================================================
+
+Step 1: Make sure .env has correct MONGO_URI
+Step 2: Run the following command:
+        node seed.js
+
+====================================================
+  RAZORPAY SETUP
+====================================================
+
+Step 1: Create account at https://razorpay.com
+Step 2: Get Key ID and Key Secret from Dashboard
+Step 3: Add to .env:
+        RAZORPAY_KEY_ID=your_key_id
+        RAZORPAY_KEY_SECRET=your_key_secret
+
+====================================================
+  UPLOADS FOLDER STRUCTURE
+====================================================
+
+uploads/
+├── categories/   → Category images
+├── events/       → Event images
+├── artists/      → Artist images
+└── profiles/     → User profile pictures
+
+====================================================
