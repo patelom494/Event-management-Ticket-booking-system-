@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getHeaders } from "../auth/authService";
-const BASE="http://localhost:8000";
+const BASE="https://event-management-ticket-booking-system.onrender.com";
 export const login=(d)=>axios.post(`${BASE}/login`,d);
 export const changePassword=(d)=>axios.post(`${BASE}/changePassword`,d);
 export const getProfile=()=>axios.get(`${BASE}/user/profile`,{headers:getHeaders()});
