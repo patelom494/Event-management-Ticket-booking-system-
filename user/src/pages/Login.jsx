@@ -142,7 +142,7 @@ export default function Login({ setIsAuthenticated, setUserData }) {
 
 <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
             <a
-              href="https://event-management-ticket-booking-sys-three.vercel.app/login"
+              href="https://event-management-ticket-booking-sys-three.vercel.app"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
