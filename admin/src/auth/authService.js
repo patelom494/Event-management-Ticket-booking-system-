@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE="http://localhost:8000";
+const BASE="https://event-management-ticket-booking-system.onrender.com";
 export const getToken=()=>localStorage.getItem("event_admin_token");
 export const setToken=(t)=>localStorage.setItem("event_admin_token",t);
 export const removeToken=()=>localStorage.removeItem("event_admin_token");
