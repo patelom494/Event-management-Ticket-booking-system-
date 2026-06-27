@@ -60,6 +60,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: [
+    "https://event-management-ticket-booking-sys-three.vercel.app",
+    "https://event-management-ticket-booking-sys-one.vercel.app",
     "http://localhost:3000",
     "http://localhost:3001",
     "http://localhost:5173",
